@@ -1,9 +1,45 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{minted}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.2ex}
+
+\hypersetup
+       {   pdfauthor = {  },
+           pdftitle={  },
+           colorlinks=TRUE,
+           linkcolor=black,
+           citecolor=blue,
+           urlcolor=blue
+       }
+
+
+
+
+
+
+\begin{document}
+
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
 using Graphs
 using dn1
 using Plots
+\end{minted}
 
-#' # Test poročilo
-#' graf
+\section{Test poročilo}
+graf
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
 #helper functions for "vložitev grafa v ravnino ali prostor s fizikalno metodo", adapted from the book
 
 """
@@ -170,6 +206,40 @@ function narisi_vlozitev(G::AbstractGraph, točke)
 end
 
 plot()
-narisi_vlozitev(G, tocke)     
+narisi_vlozitev(G, tocke)
+\end{minted}
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em, frame = leftline]{text}
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+1.1
+1.2
+1.3
+1.4
+1.5
+1.6
+1.7
+1.8
+1.9
+2.0
+314
+98
+1.4
+\end{minted}
+\includegraphics[width=\linewidth]{jl_CpHmIU/demo_2_1.pdf}
 
-#' test test
+test test
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+\end{minted}
+
+
+\end{document}
