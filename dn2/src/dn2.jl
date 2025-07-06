@@ -3,21 +3,41 @@ module dn2
 export Interval, Integral, Gaus_legendre, integriraj
 
 
+"""
+    Interval(min, max)
+
+podatkovni tip za interval preko katerega se bo integriralo, podan z spodnjo ter zgornjo mejo
+"""
 struct Interval
     min
     max
 end
 
+"""
+    Integral(fun, int::Interval)
+
+podatkovni tip za integral z podano funkcijo, ki jo integriramo ter intervalom na katerem jo integriramo
+"""
 struct Integral
     fun
     int::Interval
 end
 
+"""
+    Gaus_legendre(n)
+
+podatkovni tip za gaus-legendre integracijsko pravilo z parametrom n kot številom podintervalov
+"""
 struct Gaus_legendre
     n #st podintervalov
 end
 
+"""
+    I = integriraj(integral::Integral, metoda::Gaus_legendre)
 
+funkcija, ki integrira funkcijo integral.fun na intervalu integral.int z gaus_legendrovim integracijskim pravilom z
+metoda.n podintervalov
+"""
 function integriraj(integral::Integral, metoda::Gaus_legendre)
     a = integral.int.min
     b = integral.int.max

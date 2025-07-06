@@ -10,6 +10,7 @@ max_iter = 100
 n = 2
 prev_rez = integriraj(integral, Gaus_legendre(2))
 
+#' natančnost na 10 mest dosežemo, ko je razlika med dvema zaporednima približkoma manjša kot 1e-10
 for i in 0:max_iter
     global n
     global prev_rez
