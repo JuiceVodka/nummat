@@ -2,12 +2,16 @@ using Graphs
 using dn1
 using Plots
 
-#' # Test poročilo
-#' graf
+#' ## 18.1.1 SOR iteracija za razpršene matrike
+
+#' V sklopu te naloge smo morali implementirati podatkovni tip RazpršenaMatrika(V, I), ki hrani razpršeno matriko velikosti nxn s pomočjo matrik V in I velikosti nxm, kjer je m<=n in velja A[i, I[i, j]] = V[i, j]
+#' Podatkovni tip je uporaben, ko se srečujemo z matrikami, ki imajo veliko ničelnh elementov. S tem da jih predstavimo na ta način prihranimo veliko prostora v primerjavi s tradicionalno predstavitvijo. V najslabšem možnem primeru (m==n) pa predstavitev z tipom RedkaMatrika zasede dvakrat toliko prostora kot tradicionalna predstavitev. 
+
 #helper functions for "vložitev grafa v ravnino ali prostor s fizikalno metodo", adapted from the book
 
 """
     G = krožna_lestev(n)
+
 Ustvari graf krožna lestev z `2n` točkami.
 """
 function krožna_lestev(n)
@@ -32,6 +36,7 @@ end
 
 """
     A = matrika(G::AbstractGraph, sprem)
+
 Poišči matriko sistema linearnih enačb za vložitev grafa `G` s fizikalno metodo.
 Argument `sprem` je vektor vozlišč grafa, ki nimajo določenih koordinat.
 Indeksi v matriki `A` ustrezajo vozliščem v istem vrstnem redu,
@@ -65,6 +70,7 @@ end
 
 """
     b = desne_strani(G::AbstractGraph, sprem, koordinate)
+
 Poišči desne strani sistema linearnih enačb za eno koordinato vložitve grafa `G`
 s fizikalno metodo. Argument `sprem` je vektor vozlišč grafa, ki nimajo
 določenih koordinat. Argument `koordinate` vsebuje eno koordinato za vsa
@@ -89,6 +95,7 @@ end
 
 """
     vloži!(G::AbstractGraph, fix, točke)
+
 Poišči vložitev grafa `G` v prostor s fizikalno metodo. Argument `fix` vsebuje
 vektor vozlišč grafa, ki imajo določene koordinate. Argument `točke` je
 začetna vložitev grafa. Koordinate vozlišč, ki niso pritrjena, bodo nadomeščene
@@ -150,7 +157,11 @@ println(bestomega)
 #println(tocke)
 
 
+"""
+    narisi_vlozitev(G::AbstractGraph, točke)
 
+funkcija nariše pozicije vozlišč v grafu G z podanimi koordinatami v matriki točke, kjer vsak stolpec predstavlja eno torčko, vrstici pa x in y koordinato
+"""
 function narisi_vlozitev(G::AbstractGraph, točke)
     x = točke[1, :]
     y = točke[2, :]

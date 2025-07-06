@@ -4,22 +4,42 @@ export RedkaMatrika, sor
 
 import Base: getindex, setindex!, size, *, -
 
+"""
+    RedkaMatrika(V, I)
 
+podatkovni tip za redke matrike. Polja sta matriki velikosti nxm z neničelnimi elementi, kjer je m<=n ter matrika ki jo opisuje velikosti nxn. 
+V mattriki V so zapisane vrednosti neničelnih elementov v posameznih vrsticah. V matriki I so zapisani stolcpi istoležnih vvrednosti v posameznih vrsticah
+"""
 mutable struct RedkaMatrika
     V
     I
 end
 
+"""
+    n, n = size(R)
 
+funkcija vrne dimenzije redke matrike R
+"""
 function size(R::RedkaMatrika)
     return (size(R.V)[1], size(R.V)[1])
 end
 
+"""
+    negR = -R
+
+funkcija implementira množenje redke matrike z -1
+"""
 function -(R::RedkaMatrika)
     R.V = -R.V
     return R
 end
 
+
+"""
+    a = R[i, i]
+
+pridobivanje vrednosti iz redke matrike R na določenem mestu
+"""
 function getindex(R::RedkaMatrika, i::Int, j::Int)
     n, _ = size(R)
     if (i > n || j > n || i < 1 || j < 1)
@@ -35,7 +55,11 @@ function getindex(R::RedkaMatrika, i::Int, j::Int)
     return 0
 end
 
+"""
+    R[i, j] = a
 
+funkcija za nastavljanje vrednosti redke matrike R na določenem mestu
+"""
 function setindex!(R::RedkaMatrika, v, i::Int, j::Int)
     n, m = size(R.I)
     if (i > n || j > n || i < 1 || j < 1)
@@ -61,7 +85,11 @@ function setindex!(R::RedkaMatrika, v, i::Int, j::Int)
     end
 end
 
+"""
+    x = R*v
 
+funkcija za množenje redke matrike R z vektorjem v z desne
+"""
 function *(R::RedkaMatrika, v::Vector)
     n, m = size(R.I)
     result = zeros(eltype(v), n)
@@ -80,7 +108,11 @@ function *(R::RedkaMatrika, v::Vector)
     return result
 end
 
+"""
+    x_new = korak_gs(A, x, b)
 
+funkcija izračuna en korak Gaus-Seidlove metode ter vrne nov približek
+"""
 function korak_gs(A, x, b)
     x_new = copy(x)
     for i in 1:length(x)
@@ -98,7 +130,12 @@ function korak_gs(A, x, b)
     return x_new
 end
 
+"""
+    x, it = sor(A, b, x0, omega)
 
+funkcija izvede sor iteracijo za reševanje sistema Ax = b, z začetnim približkom x0.
+ Omega predstavlja parameter, kako močno upoštevamo korak_gs v vsaki iteraciji
+"""
 function sor(A, b, x0, omega, tol=1e-10)
     x = x0
     it = 0
