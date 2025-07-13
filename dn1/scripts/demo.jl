@@ -4,7 +4,7 @@ using Plots
 
 #' ## 18.1.1 SOR iteracija za razpršene matrike
 
-#' Igor Nikolaj Sok
+#' Igor Nikolaj Sok, nummat 2025
 
 #' V sklopu te naloge smo morali implementirati podatkovni tip RazpršenaMatrika(V, I), ki hrani razpršeno matriko velikosti nxn s pomočjo matrik V in I velikosti nxm, kjer je m<=n in velja A[i, I[i, j]] = V[i, j]
 #' Podatkovni tip je uporaben, ko se srečujemo z matrikami, ki imajo veliko ničelnh elementov. S tem da jih predstavimo na ta način prihranimo veliko prostora v primerjavi s tradicionalno predstavitvijo. V najslabšem možnem primeru (m==n) pa predstavitev z tipom RedkaMatrika zasede dvakrat toliko prostora kot tradicionalna predstavitev. 
