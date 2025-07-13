@@ -4,11 +4,21 @@ using Plots
 
 #' ## 18.1.1 SOR iteracija za razpršene matrike
 
+#' Igor Nikolaj Sok
+
 #' V sklopu te naloge smo morali implementirati podatkovni tip RazpršenaMatrika(V, I), ki hrani razpršeno matriko velikosti nxn s pomočjo matrik V in I velikosti nxm, kjer je m<=n in velja A[i, I[i, j]] = V[i, j]
 #' Podatkovni tip je uporaben, ko se srečujemo z matrikami, ki imajo veliko ničelnh elementov. S tem da jih predstavimo na ta način prihranimo veliko prostora v primerjavi s tradicionalno predstavitvijo. V najslabšem možnem primeru (m==n) pa predstavitev z tipom RedkaMatrika zasede dvakrat toliko prostora kot tradicionalna predstavitev. 
 
-#helper functions for "vložitev grafa v ravnino ali prostor s fizikalno metodo", adapted from the book
+#' Drugi del naloge je bila implementacija metode SOR. SOR je iterativna metoda za reševanje linearnega sistema, ki temelji na Gauss-Seidlovi metodi.
+#' SOR deluje tako, da v vsakem koraku začetni približek posodobi tako, da sešteje $\omega$ * novi približek ter $(1- \omega)$ * stari približek.
+#' Novi približek se po Gaus-Seidlovi metodi izračuna s pomočjo naslednje enačbe:
+#' $x_i^{(k)} = \frac{1}{a_{ii}} (b_i - \sum_{j<i} a_{ij} x_j^{(k)} - \sum_{j>i} a_{ij} x_j^{(k-1)})$
+#' Metoda SOR se ustavi, ko je $||Ax^{(k)} - b||_{\inf} < \delta$
 
+#' S pomočjo metode SOR ter podatkovnim tipom RedkaMatrika je bilo potrebno rešiti problem vložitev grafa v ravnino ali prostor s fizikalno metodo (opisano v poglavju 6 knjige o numerični matematiki v jeziku julija)
+#' Metodo sem preizkusil na grafu krožne lestve. Tri vozlišča sem na začetku fiksiral v ogljišča trikotnika. Rezultat vložitve s SOR metodo je predstavljen na naslednjem grafu.
+
+#helper functions for "vložitev grafa v ravnino ali prostor s fizikalno metodo", adapted from the book
 """
     G = krožna_lestev(n)
 
@@ -182,5 +192,6 @@ end
 
 plot()
 narisi_vlozitev(G, tocke)     
+#' 
 
-#' test test
+#' Za iskanje optimalnega $\omega$ parametra metode SOR lahko pogledamo, koliko iteracij je potrebno za izračun optimalne vložitve na 10 decimalnih mest natančno. Najmanj iteracij je potrebno pri $\omega = 1.4$ in sicer 98 iteracij

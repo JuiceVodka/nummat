@@ -35,15 +35,25 @@ using dn1
 using Plots
 \end{minted}
 
-\section{Test poročilo}
-graf
+\subsection{18.1.1 SOR iteracija za razpršene matrike}
+
+Igor Nikolaj Sok
+
+
+V sklopu te naloge smo morali implementirati podatkovni tip RazpršenaMatrika(V, I), ki hrani razpršeno matriko velikosti nxn s pomočjo matrik V in I velikosti nxm, kjer je m<=n in velja A[i, I[i, j]] = V[i, j] Podatkovni tip je uporaben, ko se srečujemo z matrikami, ki imajo veliko ničelnh elementov. S tem da jih predstavimo na ta način prihranimo veliko prostora v primerjavi s tradicionalno predstavitvijo. V najslabšem možnem primeru (m==n) pa predstavitev z tipom RedkaMatrika zasede dvakrat toliko prostora kot tradicionalna predstavitev. 
+
+
+Drugi del naloge je bila implementacija metode SOR. SOR je iterativna metoda za reševanje linearnega sistema, ki temelji na Gauss-Seidlovi metodi. SOR deluje tako, da v vsakem koraku začetni približek posodobi tako, da sešteje $\omega$ * novi približek ter $(1- \omega)$ * stari približek. Novi približek se po Gaus-Seidlovi metodi izračuna s pomočjo naslednje enačbe: $x_i^{(k)} = \frac{1}{a_{ii}} (b_i - \sum_{j<i} a_{ij} x_j^{(k)} - \sum_{j>i} a_{ij} x_j^{(k-1)})$ Metoda SOR se ustavi, ko je $||Ax^{(k)} - b||_{\inf} < \delta$
+
+
+S pomočjo metode SOR ter podatkovnim tipom RedkaMatrika je bilo potrebno rešiti problem vložitev grafa v ravnino ali prostor s fizikalno metodo (opisano v poglavju 6 knjige o numerični matematiki v jeziku julija) Metodo sem preizkusil na grafu krožne lestve. Tri vozlišča sem na začetku fiksiral v ogljišča trikotnika. Rezultat vložitve s SOR metodo je predstavljen na naslednjem grafu.
 
 
 \begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
 #helper functions for "vložitev grafa v ravnino ali prostor s fizikalno metodo", adapted from the book
-
 """
     G = krožna_lestev(n)
+
 Ustvari graf krožna lestev z `2n` točkami.
 """
 function krožna_lestev(n)
@@ -68,6 +78,7 @@ end
 
 """
     A = matrika(G::AbstractGraph, sprem)
+
 Poišči matriko sistema linearnih enačb za vložitev grafa `G` s fizikalno metodo.
 Argument `sprem` je vektor vozlišč grafa, ki nimajo določenih koordinat.
 Indeksi v matriki `A` ustrezajo vozliščem v istem vrstnem redu,
@@ -101,6 +112,7 @@ end
 
 """
     b = desne_strani(G::AbstractGraph, sprem, koordinate)
+
 Poišči desne strani sistema linearnih enačb za eno koordinato vložitve grafa `G`
 s fizikalno metodo. Argument `sprem` je vektor vozlišč grafa, ki nimajo
 določenih koordinat. Argument `koordinate` vsebuje eno koordinato za vsa
@@ -125,6 +137,7 @@ end
 
 """
     vloži!(G::AbstractGraph, fix, točke)
+
 Poišči vložitev grafa `G` v prostor s fizikalno metodo. Argument `fix` vsebuje
 vektor vozlišč grafa, ki imajo določene koordinate. Argument `točke` je
 začetna vložitev grafa. Koordinate vozlišč, ki niso pritrjena, bodo nadomeščene
@@ -186,7 +199,11 @@ println(bestomega)
 #println(tocke)
 
 
+"""
+    narisi_vlozitev(G::AbstractGraph, točke)
 
+funkcija nariše pozicije vozlišč v grafu G z podanimi koordinatami v matriki točke, kjer vsak stolpec predstavlja eno torčko, vrstici pa x in y koordinato
+"""
 function narisi_vlozitev(G::AbstractGraph, točke)
     x = točke[1, :]
     y = točke[2, :]
@@ -233,9 +250,10 @@ narisi_vlozitev(G, tocke)
 98
 1.4
 \end{minted}
-\includegraphics[width=\linewidth]{jl_CpHmIU/demo_2_1.pdf}
+\includegraphics[width=\linewidth]{jl_fpE8P3/demo_2_1.pdf}
 
-test test
+
+Za iskanje optimalnega $\omega$ parametra metode SOR lahko pogledamo, koliko iteracij je potrebno za izračun optimalne vložitve na 10 decimalnih mest natančno. Najmanj iteracij je potrebno pri $\omega = 1.4$ in sicer 98 iteracij
 
 
 \begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}

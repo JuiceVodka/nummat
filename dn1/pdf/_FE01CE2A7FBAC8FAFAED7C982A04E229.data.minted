@@ -2,7 +2,7 @@
 {
 "command": "styledef",
 "jobname": "demo",
-"timestamp": "20250705142812",
+"timestamp": "20250713144745",
 "currentfilepath": "",
 "currentfile": "",
 "inputlineno": "32",
@@ -55,7 +55,7 @@ using Plots
 "pyopt.rangestopbeforestring": "",
 "pyopt.rangeregex": "",
 "jobname": "demo",
-"timestamp": "20250705142812",
+"timestamp": "20250713144745",
 "currentfilepath": "",
 "currentfile": "",
 "inputlineno": "32",
@@ -67,9 +67,9 @@ using Plots
 "code":
 """\
 #helper functions for \"vložitev grafa v ravnino ali prostor s fizikalno metodo\", adapted from the book
-
 \"\"\"
     G = krožna_lestev(n)
+
 Ustvari graf krožna lestev z `2n` točkami.
 \"\"\"
 function krožna_lestev(n)
@@ -94,6 +94,7 @@ end
 
 \"\"\"
     A = matrika(G::AbstractGraph, sprem)
+
 Poišči matriko sistema linearnih enačb za vložitev grafa `G` s fizikalno metodo.
 Argument `sprem` je vektor vozlišč grafa, ki nimajo določenih koordinat.
 Indeksi v matriki `A` ustrezajo vozliščem v istem vrstnem redu,
@@ -127,6 +128,7 @@ end
 
 \"\"\"
     b = desne_strani(G::AbstractGraph, sprem, koordinate)
+
 Poišči desne strani sistema linearnih enačb za eno koordinato vložitve grafa `G`
 s fizikalno metodo. Argument `sprem` je vektor vozlišč grafa, ki nimajo
 določenih koordinat. Argument `koordinate` vsebuje eno koordinato za vsa
@@ -151,6 +153,7 @@ end
 
 \"\"\"
     vloži!(G::AbstractGraph, fix, točke)
+
 Poišči vložitev grafa `G` v prostor s fizikalno metodo. Argument `fix` vsebuje
 vektor vozlišč grafa, ki imajo določene koordinate. Argument `točke` je
 začetna vložitev grafa. Koordinate vozlišč, ki niso pritrjena, bodo nadomeščene
@@ -212,7 +215,11 @@ println(bestomega)
 #println(tocke)
 
 
+\"\"\"
+    narisi_vlozitev(G::AbstractGraph, točke)
 
+funkcija nariše pozicije vozlišč v grafu G z podanimi koordinatami v matriki točke, kjer vsak stolpec predstavlja eno torčko, vrstici pa x in y koordinato
+\"\"\"
 function narisi_vlozitev(G::AbstractGraph, točke)
     x = točke[1, :]
     y = točke[2, :]
@@ -270,12 +277,12 @@ narisi_vlozitev(G, tocke)
 "pyopt.rangestopbeforestring": "",
 "pyopt.rangeregex": "",
 "jobname": "demo",
-"timestamp": "20250705142812",
+"timestamp": "20250713144745",
 "currentfilepath": "",
 "currentfile": "",
-"inputlineno": "42",
+"inputlineno": "52",
 "cachepath": "_minted/",
-"highlightfilename": "37F55114640ECABDF5766E067F873B9B.highlight.minted",
+"highlightfilename": "9D284E38A11B7EF057205719DB1D0976.highlight.minted",
 },
 {
 "command": "highlight",
@@ -341,10 +348,10 @@ narisi_vlozitev(G, tocke)
 "pyopt.rangestopbeforestring": "",
 "pyopt.rangeregex": "",
 "jobname": "demo",
-"timestamp": "20250705142812",
+"timestamp": "20250713144745",
 "currentfilepath": "",
 "currentfile": "",
-"inputlineno": "211",
+"inputlineno": "228",
 "cachepath": "_minted/",
 "highlightfilename": "2209031DA27671213DE11CF44BF8561F.highlight.minted",
 },
@@ -389,10 +396,10 @@ narisi_vlozitev(G, tocke)
 "pyopt.rangestopbeforestring": "",
 "pyopt.rangeregex": "",
 "jobname": "demo",
-"timestamp": "20250705142812",
+"timestamp": "20250713144745",
 "currentfilepath": "",
 "currentfile": "",
-"inputlineno": "241",
+"inputlineno": "259",
 "cachepath": "_minted/",
 "highlightfilename": "28946C198B57498FBDC66D0E6AB531D7.highlight.minted",
 },
