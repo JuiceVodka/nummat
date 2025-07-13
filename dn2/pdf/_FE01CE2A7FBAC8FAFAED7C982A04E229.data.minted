@@ -1,0 +1,293 @@
+[
+{
+"command": "styledef",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "32",
+"cachepath": "_minted/",
+"styledeffilename": "default.style.minted",
+"style": "default",
+"commandprefix": "PYG",
+},
+{
+"command": "highlight",
+"code":
+"""\
+using dn2
+""",
+"pyopt.lexer": "julia",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "true",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "32",
+"cachepath": "_minted/",
+"highlightfilename": "01BE93CE988AF7A6B1B0DE17EF4A5599.highlight.minted",
+},
+{
+"command": "highlight",
+"code":
+"""\
+f(x) = sin(x) / x
+
+interval = Interval(0, 5)
+integral = Integral(f, interval)
+
+atol = 1e-10
+max_iter = 100
+n = 2
+prev_rez = integriraj(integral, Gaus_legendre(2))
+""",
+"pyopt.lexer": "julia",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "true",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "71",
+"cachepath": "_minted/",
+"highlightfilename": "5887CAB47F4A822BA0990C3CF9C7B9D6.highlight.minted",
+},
+{
+"command": "highlight",
+"code":
+"""\
+1.551547590515725
+""",
+"pyopt.lexer": "text",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "true",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "82",
+"cachepath": "_minted/",
+"highlightfilename": "2C8EBB751B568F09318558586EF59CC1.highlight.minted",
+},
+{
+"command": "highlight",
+"code":
+"""\
+for i in 0:max_iter
+    global n
+    global prev_rez
+    n *= 2
+    rez = integriraj(integral, Gaus_legendre(n))
+    if abs(prev_rez - rez) < atol
+        println(rez)
+        println(\"St korakov: \", n)
+        break
+    end
+    println(n, \" \", rez)
+    println(abs(prev_rez - rez))
+    prev_rez = rez
+end
+""",
+"pyopt.lexer": "julia",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "true",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "89",
+"cachepath": "_minted/",
+"highlightfilename": "7E2310DF7D2B9F534658D3EB9ABA2330.highlight.minted",
+},
+{
+"command": "highlight",
+"code":
+"""\
+4 1.550019196137019
+0.0015283943787058885
+8 1.5499365643181044
+8.263181891465798e-5
+16 1.5499315747210947
+4.98959700978574e-6
+32 1.5499312655140978
+3.0920699689573894e-7
+64 1.5499312462296144
+1.928448334354016e-8
+128 1.5499312450249736
+1.2046408315313784e-9
+1.5499312449496934
+St korakov: 256
+""",
+"pyopt.lexer": "text",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "true",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "demo",
+"timestamp": "20250713132531",
+"currentfilepath": "",
+"currentfile": "",
+"inputlineno": "105",
+"cachepath": "_minted/",
+"highlightfilename": "1919D05E098E7F1172350F87F32C2BDD.highlight.minted",
+},
+]
