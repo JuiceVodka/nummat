@@ -1,0 +1,151 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{minted}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.2ex}
+
+\hypersetup
+       {   pdfauthor = {  },
+           pdftitle={  },
+           colorlinks=TRUE,
+           linkcolor=black,
+           citecolor=blue,
+           urlcolor=blue
+       }
+
+
+
+
+
+
+\begin{document}
+
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+using dn3
+using Plots
+\end{minted}
+
+\section{18.3.3 Perioda limitnega cikla}
+Igor Nikolaj Sok, nummat 2025
+
+
+\subsection{Opis problema}
+V kontekstu naloge je bilo potrebno poiskati periodo limitnega cikla za nelinearno diferencialno enačbo drugega reda:
+
+\[
+\ddot{x}(t) - 4(1 - x^2)\dot{x}(t) + x(t) = 0
+\]
+
+Enačba opisuje Van der Polov oscilator s parametrom $\mu = 4$
+
+
+Enačba Van der polovega oscilatorja je sledeča:
+
+
+V kontekstu naloge je bilo potrebno poiskati periodo limitnega cikla za nelinearno diferencialno enačbo drugega reda:
+
+\[
+\frac{d^2x}{dt^2} - \mu (1 - x^2)\frac{dx}{dt} + x = 0
+\]
+
+Limitni cikel predstavlja stabilno periodično rešitev sistema, kamor konvergera trajektorija iz skoraj vseh začetnih pogojev
+
+
+\subsection{Opis Rešitve}
+
+Enačbo preoblikujemo v sistem prvega reda:
+
+
+\[
+\begin{cases}
+\dot{x}_1 = x_2 \\
+\dot{x}_2 = 4(1 - x_1^2)x_2 - x_1
+\end{cases}
+\]
+
+Sistem rešimo numerično z uporabo metode Runge-Kutta (RK4) v zaporednih časovnih korakih. Periodo limitnega cikla dobimo tako, da gledamo, kdaj funkcija x(t) prečka ničlo pri čemer je njen odvod pozitiven. Časovna razdalja med dvema zaporednima trenutkoma kjer slednje velja predstavlja periodo limitnega cikla. Ker želimo periodo določiti na 10 decimalnih mest natančno rezultata ne vrnemo že pri prvi dobljeni periodi, temveč nadaljujemo z iskanjem periode. Ko najdemo novo jo primerjamo s prejšnjo. Če se nova periodo od prejšnje razlikuje za manj kot 1e-10 jo lahko vrnemo, saj smo rezultat dobili na 10 decimalnih mest natančno. V nasprotnem primeru shranimo novo periodo ter s postopkom nadaljujemo.
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+dt = 1e-2
+t_max = 100.0
+u = [1., 0.]
+\end{minted}
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em, frame = leftline]{text}
+2-element Vector{Float64}:
+ 1.0
+ 0.0
+\end{minted}
+
+Izračunana perioda limitnega cikla:
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+T = solve_vanderpol_period(dt, t_max, u)
+
+T
+\end{minted}
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em, frame = leftline]{text}
+10.199999999999928
+\end{minted}
+
+v dokument
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+println("Estimated limit cycle period: ", T)
+
+
+
+steps = Int(round(t_max / dt))
+traj = zeros(2, steps)
+u = [1., 0.]
+
+for i in 1:steps
+    global u
+    traj[:, i] .= u
+    u = rk4_step(u, dt, lc)
+end
+\end{minted}
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em, frame = leftline]{text}
+Estimated limit cycle period: 10.199999999999928
+\end{minted}
+
+\subsection{Graf odvisnosti x(t) ter x'(t)\$}
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+plot(traj[1, :], traj[2, :],
+     xlabel="x(t)", ylabel="x'(t)",
+     title="Limitni cikel v faznem prostoru",
+     legend=false,
+     size=(600, 400))
+\end{minted}
+\includegraphics[width=\linewidth]{jl_VEOVWq/demo_5_1.pdf}
+
+
+\subsection{Graf odvisnosti x(t) ter t}
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+plot(1:steps, traj[1, :],
+     xlabel="t", ylabel="x(t)",
+     title="x(t) v odvisnosti od t",
+     legend=false,
+     size=(600, 400))
+\end{minted}
+\includegraphics[width=\linewidth]{jl_VEOVWq/demo_6_1.pdf}
+
+
+\begin{minted}[texcomments = true, mathescape, fontsize=\small, xleftmargin=0.5em]{julia}
+\end{minted}
+
+
+\end{document}
